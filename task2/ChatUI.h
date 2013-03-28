@@ -13,6 +13,7 @@
 
 class ChatUI : public QWidget
 {
+Q_OBJECT
 
 public:
   ChatUI();

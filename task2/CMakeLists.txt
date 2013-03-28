@@ -4,6 +4,7 @@ project (sdc_client)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 set(CMAKE_C_COMPILER "gcc-4.6")
 set(CMAKE_CXX_COMPILER "/usr/bin/g++-4.6")
+set(CMAKE_AUTOMOC TRUE)
 
 #begin snippet
 #next lines are for creating .h & .cpp files out of .ice Files

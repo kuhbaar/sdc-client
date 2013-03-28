@@ -1,6 +1,5 @@
 #include "ChatUI.h"
 #include "Chat.h"
-#include "sendButton.h"
 #include <QLabel>
 
 using namespace std;

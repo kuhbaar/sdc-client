@@ -3,10 +3,6 @@ project (sdc_client)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-
-
-
-
 #begin snippet
 #next lines are for creating .h & .cpp files out of .ice Files
 set(out_dir "${CMAKE_CURRENT_BINARY_DIR}")
@@ -31,7 +27,12 @@ add_executable(sdc_client sdc_client.cpp ${out_file})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${ZeroCIce_INCLUDE_DIR})
 find_package(ZeroCIce REQUIRED)
+find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
 
+
+target_link_libraries(sdc_client ${QT_QTDECLARATIVE_LIBRARY})
+target_link_libraries(sdc_client ${QT_LIBRARIES})
 target_link_libraries(sdc_client boost_program_options)
 target_link_libraries(sdc_client ${ZeroCIceCore_LIBRARY})
 target_link_libraries(sdc_client ${ZeroCIceUtil_LIBRARY})

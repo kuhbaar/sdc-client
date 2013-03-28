@@ -25,7 +25,7 @@ private:
   QVBoxLayout *layout;
   QFormLayout *form;
 
-private slots:
+public slots:
   void send();
 };
 

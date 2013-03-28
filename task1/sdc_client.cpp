@@ -3,9 +3,6 @@
 #include "SecureDistributedChat.h"
 #include <Ice/Ice.h>
 
-#include "Chat.h"
-#include <QApplication>
-
 using namespace std;
 namespace po = boost::program_options;
 

@@ -1,12 +1,9 @@
 #include <iostream>
 #include <boost/program_options.hpp>
-#include "SecureDistributedChat.h"
-#include <Ice/Ice.h>
-
-#include <QWidget>
 #include "Chat.h"
+
+#include "ChatUI.h"
 #include <QApplication>
-#include <QPushButton>
 
 using namespace std;
 namespace po = boost::program_options;
@@ -31,8 +28,8 @@ int main(int argc, char *argv[]){
   
   //when ./sdc_client without parameters
   if (!vm.count("server_name") && !vm.count("port") && !vm.count("ca_path")){
-    QApplication a(argc, argv);
-    Chat c;
+    QApplication a(argc, argv);    
+    ChatUI c;
 
     c.show();
 
@@ -43,22 +40,11 @@ int main(int argc, char *argv[]){
   string port = vm["port"].as<string>();
   string ca_path = vm["ca_path"].as<string>();
 
-  Ice::PropertiesPtr props = Ice::createProperties(argc, argv);
-  props->setProperty("Ice.Plugin.IceSSL", "IceSSL:createIceSSL");
-  props->setProperty("IceSSL.CertAuthFile", ca_path);
-
-  Ice::CommunicatorPtr ic;
   try{
-    Ice::InitializationData id;
-    id.properties = props;
-    Ice::CommunicatorPtr ic = Ice::initialize(id);
-
-    Ice::ObjectPrx base = ic->stringToProxy("Authentication:ssl -h " + server +" -p " + port);
-    sdc::AuthenticationIPrx auth = sdc::AuthenticationIPrx::checkedCast(base);
-    cout << auth->echo("Hallo chat") << endl;
+    Chat sdc = Chat(server, port, ca_path);
+    cout << sdc.echo("Hello Chat") << endl;
   } catch (const Ice::Exception& e){
     std::cerr << e << std::endl;
   }
-  if(ic) ic->destroy();
   return 1;
 }

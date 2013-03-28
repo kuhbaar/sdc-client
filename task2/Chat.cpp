@@ -1,46 +1,47 @@
 #include "Chat.h"
+#include <QLabel>
 
 Chat::Chat()
 {
   connectButton = new QPushButton( "Verbinden" );
-  addressLineEdit = new QLineEdit();
-  usernameLineEdit = new QLineEdit();
-  pwLineEdit = new QLineEdit();
-  authBox = new QGroupBox( "Authentifizierung erforderlich" );
+  serverLineEdit = new QLineEdit();
+  portLineEdit = new QLineEdit();
+  caLineEdit = new QLineEdit();
+  msg = new QTextEdit();
+  re = new QTextEdit();
   layout = new QVBoxLayout();
-  authLayout = new QVBoxLayout();
+  form = new QFormLayout();
  
   // Anstatt eine Verbindung herzustellen beendet unser Button das Programm
   // 'qApp' ist ein globaler Zeiger auf unsere QApplication-Instanz, die in
   // 'QApplication' deklariert ist.
   connect( connectButton, SIGNAL( clicked() ), qApp, SLOT( quit() ) );
+  re->setReadOnly(true);
+
+  form->addRow("Server Name", serverLineEdit);
+  form->addRow("PortNo", portLineEdit);
+  form->addRow("Path to certificate", caLineEdit);
+  form->addRow(layout);
+  layout->addWidget(new QLabel("Your message"));
+  layout->addWidget(msg);
+  layout->addWidget(new QLabel("Response"));
+  layout->addWidget(re);
+  layout->addWidget(connectButton);
+
  
-  // Passwort beim Tippen nicht anzeigen
-  pwLineEdit->setEchoMode( QLineEdit::Password );
-  // Widget-Gruppe kann aktiviert werden
-  authBox->setCheckable( true );
-  authBox->setChecked( false );
- 
-  // Widgets in den Layouts platzieren
-  authLayout->addWidget( usernameLineEdit );
-  authLayout->addWidget( pwLineEdit );
-  authBox->setLayout( authLayout );
-  layout->addWidget( addressLineEdit );
-  layout->addWidget( authBox );
-  layout->addWidget( connectButton );
- 
-  setWindowTitle( "Verbinden" );
-  setLayout( layout );
+  setWindowTitle( "SDC" );
+  setLayout( form );
 }
  
  
 Chat::~Chat()
 {
   delete connectButton;
-  delete addressLineEdit;
-  delete usernameLineEdit;
-  delete pwLineEdit;
-  delete authLayout;
-  delete authBox;
+  delete serverLineEdit;
+  delete portLineEdit;
+  delete caLineEdit;
+  delete msg;
+  delete re;
+  delete form;
   delete layout;
 }

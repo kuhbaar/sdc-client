@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QVBoxLayout>
+#include <QFormLayout>
+#include <QTextEdit>
 
 class Chat : public QWidget
 {
@@ -17,9 +19,10 @@ public:
 
 private:
   QPushButton *connectButton;
-  QLineEdit *addressLineEdit, *usernameLineEdit, *pwLineEdit;
-  QGroupBox *authBox;
-  QVBoxLayout *layout, *authLayout;
+  QLineEdit *serverLineEdit, *portLineEdit, *caLineEdit;
+  QTextEdit *msg, *re;
+  QVBoxLayout *layout;
+  QFormLayout *form;
 };
 
 #endif

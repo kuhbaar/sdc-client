@@ -1,0 +1,2 @@
+/home/zacky/Projects/SEPM/Einzel/task2/build/CMakeFiles/sdc_client.dir
+/home/zacky/Projects/SEPM/Einzel/task2/build/CMakeFiles/sdc_client_automoc.dir

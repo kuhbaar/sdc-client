@@ -1,0 +1,1 @@
+/usr/bin/g++-4.6       CMakeFiles/sdc_client.dir/sdc_client.cpp.o CMakeFiles/sdc_client.dir/SecureDistributedChat.cpp.o CMakeFiles/sdc_client.dir/ChatUI.cpp.o CMakeFiles/sdc_client.dir/sdc_client_automoc.cpp.o  -o sdc_client -rdynamic -lQtDeclarative -lQtGui -lQtCore -lboost_program_options -lIce -lIceUtil -lIceSSL 

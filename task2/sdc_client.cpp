@@ -3,8 +3,10 @@
 #include "SecureDistributedChat.h"
 #include <Ice/Ice.h>
 
+#include <QWidget>
 #include "Chat.h"
 #include <QApplication>
+#include <QPushButton>
 
 using namespace std;
 namespace po = boost::program_options;
@@ -27,9 +29,11 @@ int main(int argc, char *argv[]){
       return 1;
   }
   
+  //when ./sdc_client without parameters
   if (!vm.count("server_name") && !vm.count("port") && !vm.count("ca_path")){
     QApplication a(argc, argv);
     Chat c;
+
     c.show();
 
     return a.exec();

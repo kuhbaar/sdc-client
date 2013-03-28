@@ -23,7 +23,7 @@ COMMAND "${ZeroCIce_slice2cpp_BIN}"
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 #end snippet
 
-add_executable(sdc_client sdc_client.cpp ${out_file})
+add_executable(sdc_client sdc_client.cpp ${out_file} Chat.cpp)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${ZeroCIce_INCLUDE_DIR})
 find_package(ZeroCIce REQUIRED)

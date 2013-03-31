@@ -1,5 +1,5 @@
-A simple chat client with few features.
+A simple chat client using ZeroC Ice Middleware. Server only has one method - echo(string s) - which returns the string sent.
+Client connects to given server, at given port and using the given certificate.
 
-slice2cpp --stream -I /usr/share/Ice-3.4.2/slice/ SecureDistributdChat.ice  //use to get a slice file
-
-The server has an echo method, returning what client has sent. This Program connects to a given server using given port and sending "hello chat".
+slice files will be automagically created by cmake.
+Workflow: create build directory, execute "cmake .." and "make"

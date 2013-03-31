@@ -10,7 +10,7 @@
 #include <QFormLayout>
 #include <QTextEdit>
 #include "Chat.h"
-
+//Class encapsulating all GUI elements
 class ChatUI : public QWidget
 {
 Q_OBJECT
@@ -27,7 +27,11 @@ private:
   QFormLayout *form;
 
 public slots:
-  void send();
+  /*it takes the servername, port and certificate's path
+  from GUI inputs and creates a Chat-class, 
+  which then calls the echo method and redirects
+  the return string to response window of GUI */
+  void send(); 
 };
 
 #endif

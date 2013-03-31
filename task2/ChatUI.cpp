@@ -3,7 +3,7 @@
 #include <QLabel>
 
 using namespace std;
-
+//Class encapsulating all GUI elements
 ChatUI::ChatUI()
 {
   connectButton = new QPushButton("Send");
@@ -16,12 +16,13 @@ ChatUI::ChatUI()
   layout = new QVBoxLayout();
   form = new QFormLayout();
  
-  // Anstatt eine Verbindung herzustellen beendet unser Button das Programm
-  // 'qApp' ist ein globaler Zeiger auf unsere QApplication-Instanz, die in
-  // 'QApplication' deklariert ist.
+  /*Connecting the Buttons with Slots:
+    connect button invokes send() when pressed
+    exit button invokes quit() when pressed*/
   connect(connectButton, SIGNAL(clicked()), this, SLOT(send())); 
   connect(exitButton, SIGNAL(clicked()), qApp, SLOT(quit()));
 
+  //the output ist read-only
   re->setReadOnly(true);
 
   form->addRow("Server Name", serverLineEdit);
@@ -54,6 +55,10 @@ ChatUI::~ChatUI()
   delete layout;
 }
 
+/*it takes the servername, port and certificate's path
+  from GUI inputs and creates a Chat-class, 
+  which then calls the echo method and redirects
+  the return string to response window of GUI */
 void ChatUI::send(){
   string s = this->serverLineEdit->text().toStdString();
   string p = this->portLineEdit->text().toStdString();
